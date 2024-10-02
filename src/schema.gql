@@ -1,0 +1,42 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ArtworkEntity {
+  id: String!
+  name: String!
+  year: Float!
+  description: String!
+  type: String!
+  mainImage: String!
+  museum: MuseumEntity!
+}
+
+type MuseumEntity {
+  id: String!
+  name: String!
+  description: String!
+  address: String!
+  city: String!
+  image: String!
+  artworks: [ArtworkEntity!]!
+}
+
+type Query {
+  museums: [MuseumEntity!]!
+  museum(id: String!): MuseumEntity!
+}
+
+type Mutation {
+  createMuseum(museum: MuseumDto!): MuseumEntity!
+  updateMuseum(id: String!, museum: MuseumDto!): MuseumEntity!
+  deleteMuseum(id: String!): String!
+}
+
+input MuseumDto {
+  name: String!
+  description: String!
+  address: String!
+  city: String!
+  image: String!
+}
